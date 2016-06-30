@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="image_size">120dp</dimen>
+    <dimen name="text_size">23sp</dimen>
+    <dimen name="divider_height">8dp</dimen>
+    <dimen name="list_padding">16dp</dimen>
+</resources>
