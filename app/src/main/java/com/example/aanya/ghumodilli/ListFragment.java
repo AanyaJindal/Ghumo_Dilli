@@ -4,9 +4,11 @@ package com.example.aanya.ghumodilli;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.ListView;
@@ -37,6 +39,18 @@ public class ListFragment extends Fragment {
         placeListView = (ListView) getView().findViewById(R.id.frag_list);
         PlaceListAdapter placeListAdapter = new PlaceListAdapter(placeList);
         placeListView.setAdapter(placeListAdapter);
+        placeListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                getActivity().getSupportFragmentManager().popBackStack();
+                FragmentTransaction fragmentTransaction = getActivity().getSupportFragmentManager().beginTransaction();
+                DetailsFragment detailsFragment = DetailsFragment.newInstance(i);
+                fragmentTransaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
+                fragmentTransaction.replace(R.id.places_detail,detailsFragment,null);
+                fragmentTransaction.addToBackStack(null);
+                fragmentTransaction.commit();
+            }
+        });
     }
 
     private class PlaceListAdapter extends BaseAdapter{

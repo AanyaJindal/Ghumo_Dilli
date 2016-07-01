@@ -8,6 +8,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -16,7 +17,9 @@ public class DetailsFragment extends Fragment {
     public static final String PLACE_ID = "anything bro";
 
     ImageView imgVar;
-    TextView tvNameVar, tvDescriptionVar, tvTimingsVar, tvEntryFeesVar, tvlocationVar, tvWebLinkVar, tvContactVar;
+    TextView tvNameVar, tvDescriptionVar, tvTimingsVar, tvEntryFeesVar, tvlocationVar, tvWikiLink, tvDelhiLink, tvOtherLiink, tvContactVar;
+    Button btLeft, btRight;
+    private int currImage = 0;
 
     public DetailsFragment() {
         // Required empty public constructor
@@ -41,31 +44,52 @@ public class DetailsFragment extends Fragment {
         tvTimingsVar = (TextView) rootView.findViewById(R.id.tv_timings_var);
         tvEntryFeesVar = (TextView) rootView.findViewById(R.id.tv_entry_fees_var);
         tvlocationVar = (TextView) rootView.findViewById(R.id.tv_location_var);
-        tvWebLinkVar = (TextView) rootView.findViewById(R.id.tv_web_link_var);
+        tvWikiLink = (TextView) rootView.findViewById(R.id.tv_wiki_link);
+        tvDelhiLink = (TextView) rootView.findViewById(R.id.tv_delhi_link);
+        tvOtherLiink = (TextView) rootView.findViewById(R.id.tv_other_link);
         tvContactVar = (TextView) rootView.findViewById(R.id.tv_contact_var);
+        btLeft = (Button) rootView.findViewById(R.id.bt_left);
+        btRight = (Button) rootView.findViewById(R.id.bt_right);
 
         int a = getArguments().getInt(PLACE_ID, 0);
 
         final Places.Place place = MainActivity.abc.get(a);
 
-        imgVar.setImageResource(place.imageID);
+
+
+        imgVar.setImageResource(place.bigImageID[currImage]);
         tvNameVar.setText(place.name);
         tvDescriptionVar.setText(place.description);
         tvTimingsVar.setText(place.timings);
         tvEntryFeesVar.setText(place.entryFees+"");
         tvlocationVar.setText(place.location);
-        tvWebLinkVar.setText(place.webLink);
         tvContactVar.setText(place.contact);
 
-        tvWebLinkVar.setOnClickListener(new View.OnClickListener() {
+        View.OnClickListener ocl = new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String url = place.webLink;
+                String url = place.wikiLink;
+                switch (v.getId()) {
+                    case R.id.tv_wiki_link:
+                        url = place.wikiLink;
+                        break;
+                    case R.id.tv_delhi_link:
+                        url = place.delhiLink;
+                        break;
+                    case R.id.tv_other_link:
+                        url = place.otherLink;
+                        break;
+                }
                 Intent i = new Intent(Intent.ACTION_VIEW);
                 i.setData(Uri.parse(url));
                 startActivity(i);
             }
-        });
+        };
+
+        tvWikiLink.setOnClickListener(ocl);
+        tvDelhiLink.setOnClickListener(ocl);
+        tvOtherLiink.setOnClickListener(ocl);
+
 
         tvlocationVar.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -84,6 +108,28 @@ public class DetailsFragment extends Fragment {
                 Intent intent = new Intent(Intent.ACTION_DIAL);
                 intent.setData(Uri.parse("tel:"+place.contact));
                 startActivity(intent);
+            }
+        });
+
+        btRight.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                currImage++;
+                if(currImage==4){
+                    currImage=0;
+                }
+                imgVar.setImageResource(place.bigImageID[currImage]);
+            }
+        });
+
+        btLeft.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                currImage--;
+                if(currImage==-1){
+                    currImage=3;
+                }
+                imgVar.setImageResource(place.bigImageID[currImage]);
             }
         });
 
