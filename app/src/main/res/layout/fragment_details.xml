@@ -1,138 +1,231 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:padding="16dp">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:orientation="vertical"
         tools:context="com.aanya.ghumodilli.DetailsFragment">
 
         <!-- TODO: Update blank fragment layout -->
-        <ImageView
-            android:id="@+id/img_var"
-            android:layout_width="wrap_content"
-            android:layout_height="200dp"
-            android:src="@mipmap/ic_launcher" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/bt_left"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="&lt;"
+                android:textSize="20dp" />
+
+            <ImageView
+                android:padding="10dp"
+                android:id="@+id/img_var"
+                android:layout_width="210dp"
+                android:layout_height="210dp"
+                android:layout_gravity="center"
+                android:src="@drawable/india_gate_big" />
+
+            <Button
+                android:id="@+id/bt_right"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="&gt;"
+                android:textSize="20dp" />
+
+        </LinearLayout>
 
         <TextView
             android:id="@+id/tv_name"
             android:layout_width="match_parent"
-            android:layout_height="30dp"
+            android:layout_height="wrap_content"
             android:layout_marginTop="30dp"
-            android:text="Name"
-            android:textColor="#808080"
-            android:textSize="20sp" />
+            android:text="Name:"
+            android:textColor="@color/colorPrimary"
+            android:textSize="15sp"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/tv_name_var"
             android:layout_width="match_parent"
-            android:layout_height="30dp"
+            android:layout_height="wrap_content"
             android:text="Name goes here"
+            android:textAllCaps="true"
             android:textColor="#000000"
-            android:textSize="22sp" />
+            android:textSize="17sp" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.2dp"
+            android:background="#000000" />
 
         <TextView
-            android:layout_marginTop="10dp"
-            android:textColor="#808080"
             android:id="@+id/tv_description"
             android:layout_width="match_parent"
-            android:layout_height="30dp"
-            android:text="Description"
-            android:textSize="20sp" />
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="Description:"
+            android:textColor="@color/colorPrimary"
+            android:textSize="15sp"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/tv_description_var"
             android:layout_width="match_parent"
-            android:layout_height="30dp"
+            android:layout_height="wrap_content"
             android:text="Description goes here"
             android:textColor="#000000"
-            android:textSize="22sp" />
+            android:textSize="17sp" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.2dp"
+            android:background="#000000" />
 
         <TextView
             android:id="@+id/tv_timings"
             android:layout_width="match_parent"
-            android:layout_height="30dp"
+            android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:text="Timings"
-            android:textSize="20sp"
-            android:textColor="#808080"/>
+            android:text="Timings:"
+            android:textColor="@color/colorPrimary"
+            android:textSize="15sp"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/tv_timings_var"
             android:layout_width="match_parent"
-            android:layout_height="30dp"
+            android:layout_height="wrap_content"
             android:text="Timings go here"
             android:textColor="#000000"
-            android:textSize="22sp" />
+            android:textSize="17sp" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.2dp"
+            android:background="#000000" />
 
         <TextView
             android:id="@+id/tv_entry_fees"
             android:layout_width="match_parent"
-            android:layout_height="30dp"
-            android:text="Entry Fees:"
+            android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:textSize="20sp"
-            android:textColor="#808080"/>
+            android:text="Entry Fees:"
+            android:textColor="@color/colorPrimary"
+            android:textSize="15sp"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/tv_entry_fees_var"
             android:layout_width="match_parent"
-            android:layout_height="30dp"
+            android:layout_height="wrap_content"
             android:text="Entry fees goes here"
             android:textColor="#000000"
-            android:textSize="22sp" />
+            android:textSize="17sp" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.2dp"
+            android:background="#000000" />
 
         <TextView
             android:id="@+id/tv_location"
-            android:layout_marginTop="10dp"
             android:layout_width="match_parent"
-            android:layout_height="30dp"
-            android:text="Location"
-            android:textSize="20sp"
-            android:textColor="#808080"/>
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="Location:"
+            android:textColor="@color/colorPrimary"
+            android:textSize="15sp"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/tv_location_var"
             android:layout_width="match_parent"
-            android:layout_height="30dp"
+            android:layout_height="wrap_content"
             android:text="Location goes here"
-            android:textColor="#000000"
-            android:textSize="22sp" />
+            android:textColor="#000099"
+            android:textSize="17sp" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.2dp"
+            android:background="#000000" />
 
         <TextView
-            android:layout_marginTop="10dp"
             android:id="@+id/tv_web_link"
             android:layout_width="match_parent"
-            android:layout_height="30dp"
-            android:textColor="#808080"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
             android:text="Web Link:"
-            android:textSize="20sp" />
+            android:textColor="@color/colorPrimary"
+            android:textSize="15sp"
+            android:textStyle="bold" />
 
-        <TextView
-            android:id="@+id/tv_web_link_var"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="30dp"
-            android:text="Link goes here"
-            android:textColor="#000000"
-            android:textSize="22sp" />
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tv_wiki_link"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Wiki   |"
+                android:textColor="#000099"
+                android:textSize="17sp" />
+            <TextView
+                android:id="@+id/tv_delhi_link"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:text="Delhi Govt.   |"
+                android:textColor="#000099"
+                android:textSize="17sp" />
+            <TextView
+                android:id="@+id/tv_other_link"
+                android:layout_width="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:layout_height="wrap_content"
+                android:text="Other Link"
+                android:textColor="#000099"
+                android:textSize="17sp" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.2dp"
+            android:background="#000000" />
 
         <TextView
             android:id="@+id/tv_contact"
-            android:layout_marginTop="10dp"
             android:layout_width="match_parent"
-            android:layout_height="30dp"
-            android:textColor="#808080"
-            android:text="Contact"
-            android:textSize="20sp" />
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="Contact:"
+            android:textColor="@color/colorPrimary"
+            android:textSize="15sp"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/tv_contact_var"
             android:layout_width="match_parent"
-            android:layout_height="30dp"
+            android:layout_height="wrap_content"
             android:text="Contact Details go here"
-            android:textColor="#000000"
-            android:textSize="22sp" />
+            android:textColor="#000099"
+            android:textSize="17sp" />
+
     </LinearLayout>
+
 </ScrollView>
