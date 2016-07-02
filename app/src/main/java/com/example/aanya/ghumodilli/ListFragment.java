@@ -4,6 +4,7 @@ package com.example.aanya.ghumodilli;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -35,15 +36,16 @@ public class ListFragment extends Fragment {
     private void createList(){
         ArrayList<Places.Place> placeList;
         ListView placeListView;
-        placeList = Places.getPlaces();
+        placeList = MainActivity.abc;
         placeListView = (ListView) getView().findViewById(R.id.frag_list);
         PlaceListAdapter placeListAdapter = new PlaceListAdapter(placeList);
         placeListView.setAdapter(placeListAdapter);
         placeListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                getActivity().getSupportFragmentManager().popBackStack();
-                FragmentTransaction fragmentTransaction = getActivity().getSupportFragmentManager().beginTransaction();
+                FragmentManager manager = getActivity().getSupportFragmentManager();
+                manager.popBackStack();
+                FragmentTransaction fragmentTransaction = manager.beginTransaction();
                 DetailsFragment detailsFragment = DetailsFragment.newInstance(i);
                 fragmentTransaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
                 fragmentTransaction.replace(R.id.places_detail,detailsFragment,null);

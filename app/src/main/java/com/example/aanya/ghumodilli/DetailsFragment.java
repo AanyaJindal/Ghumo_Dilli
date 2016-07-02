@@ -2,6 +2,7 @@ package com.example.aanya.ghumodilli;
 
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -55,20 +56,21 @@ public class DetailsFragment extends Fragment {
 
         final Places.Place place = MainActivity.abc.get(a);
 
-
-
         imgVar.setImageResource(place.bigImageID[currImage]);
         tvNameVar.setText(place.name);
         tvDescriptionVar.setText(place.description);
         tvTimingsVar.setText(place.timings);
-        tvEntryFeesVar.setText(place.entryFees+"");
+        if (place.entryFees != 0)
+            tvEntryFeesVar.setText(place.entryFees + "");
+        else
+            tvEntryFeesVar.setText("Free Entry");
         tvlocationVar.setText(place.location);
         tvContactVar.setText(place.contact);
 
         View.OnClickListener ocl = new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String url = place.wikiLink;
+                String url = " ";
                 switch (v.getId()) {
                     case R.id.tv_wiki_link:
                         url = place.wikiLink;
@@ -98,16 +100,19 @@ public class DetailsFragment extends Fragment {
                 Intent mapIntent = new Intent(Intent.ACTION_VIEW, gmmIntentUri);
                 mapIntent.setPackage("com.google.android.apps.maps");
                 startActivity(mapIntent);
-
             }
         });
 
         tvContactVar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(Intent.ACTION_DIAL);
-                intent.setData(Uri.parse("tel:"+place.contact));
-                startActivity(intent);
+                if (!place.contact.equals("No contact")) {
+                    Intent intent = new Intent(Intent.ACTION_DIAL);
+                    intent.setData(Uri.parse("tel:" + place.contact));
+                    startActivity(intent);
+                } else {
+                    tvContactVar.setTextColor(Color.BLACK);
+                }
             }
         });
 
@@ -115,8 +120,8 @@ public class DetailsFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 currImage++;
-                if(currImage==4){
-                    currImage=0;
+                if (currImage == 4) {
+                    currImage = 0;
                 }
                 imgVar.setImageResource(place.bigImageID[currImage]);
             }
@@ -126,13 +131,12 @@ public class DetailsFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 currImage--;
-                if(currImage==-1){
-                    currImage=3;
+                if (currImage == -1) {
+                    currImage = 3;
                 }
                 imgVar.setImageResource(place.bigImageID[currImage]);
             }
         });
-
         return rootView;
     }
 
