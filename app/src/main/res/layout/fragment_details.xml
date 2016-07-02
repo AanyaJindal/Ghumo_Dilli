@@ -141,6 +141,29 @@
             android:background="#000000" />
 
         <TextView
+            android:id="@+id/tv_metro"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="Nearest Metro Station:"
+            android:textColor="@color/colorPrimary"
+            android:textSize="15sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tv_metro_var"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Metro Station goes here"
+            android:textColor="#000099"
+            android:textSize="17sp" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.2dp"
+            android:background="#000000" />
+
+        <TextView
             android:id="@+id/tv_location"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
