@@ -10,7 +10,7 @@ import java.util.ArrayList;
 public class MainActivity extends AppCompatActivity {
 
     public static ArrayList<Places.Place> abc = Places.getPlaces();
-    //what we do for a 
+    //what we do for a free
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
